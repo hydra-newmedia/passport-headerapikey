@@ -6,4 +6,4 @@
  *  Copyright hydra newmedia GmbH
  */
 
-// export * from './######';
+export * from './errors/BadRequestErrorTest';
