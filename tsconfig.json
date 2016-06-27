@@ -1,0 +1,12 @@
+{
+    "version": "1.8.10",
+    "compilerOptions": {
+        "module": "commonjs",
+        "declaration": true,
+        "outDir": "lib/"
+    },
+    "files": [
+        "./src/index.ts",
+        "./typings/index.d.ts"
+    ]
+}
