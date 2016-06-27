@@ -1,5 +1,14 @@
 {
   "globalDependencies": {
-    "node": "registry:dt/node#6.0.0+20160621231320"
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160625155614",
+    "node": "registry:dt/node#6.0.0+20160621231320",
+    "passport": "registry:dt/passport#0.2.0+20160317120654",
+    "passport-strategy": "registry:dt/passport-strategy#0.2.0+20160316155526",
+    "serve-static": "registry:dt/serve-static#0.0.0+20160606155157"
+  },
+  "dependencies": {
+    "lodash": "registry:npm/lodash#4.0.0+20160416211519",
+    "mime": "registry:npm/mime#1.3.0+20160423043021"
   }
 }

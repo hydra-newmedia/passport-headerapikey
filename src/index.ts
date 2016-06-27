@@ -6,5 +6,6 @@
  *  Copyright hydra newmedia GmbH
  */
 
-// export * from './######';
+export * from './Strategy';
 
+export * from './errors/BadRequestError';
