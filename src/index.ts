@@ -6,6 +6,6 @@
  *  Copyright hydra newmedia GmbH
  */
 
-export * from './Strategy';
+export { Strategy as default, Strategy as HeaderAPIKeyStrategy } from './Strategy';
 
 export * from './errors/BadRequestError';
