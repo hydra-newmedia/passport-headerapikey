@@ -21,6 +21,8 @@ The strategy requires a `verify` callback, which accepts these
 credentials and calls `done` providing a user.
 
     passport.use(new HeaderAPIKeyStrategy(
+      'apikey',
+      false,
       function(apikey, done) {
         User.findOne({ apikey: apikey }, function (err, user) {
           if (err) { return done(err); }
