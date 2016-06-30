@@ -14,5 +14,8 @@
   "globalDevDependencies": {
     "expect.js": "registry:dt/expect.js#0.3.1+20160317120654",
     "mocha": "registry:dt/mocha#2.2.5+20160619032855"
+  },
+  "devDependencies": {
+    "sinon": "registry:npm/sinon#1.16.0+20160427193336"
   }
 }
