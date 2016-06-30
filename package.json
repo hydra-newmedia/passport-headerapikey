@@ -19,7 +19,7 @@
     "lib/"
   ],
   "scripts": {
-    "postinstall": "node_modules/typings/dist/bin.js install",
+    "install-typings": "node_modules/typings/dist/bin.js install",
     "pretest": "node_modules/typescript/bin/tsc && rm -rf testDist/ && node_modules/typescript/bin/tsc --rootDir test --outDir testDist test/**/*.ts typings/index.d.ts",
     "test": "node_modules/mocha/bin/mocha testDist/* -R nyan --recursive"
   },
