@@ -7,3 +7,5 @@
  */
 
 export * from './errors/BadRequestErrorTest';
+
+export * from './StrategyTest';

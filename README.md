@@ -21,7 +21,7 @@ The strategy requires a `verify` callback, which accepts these
 credentials and calls `done` providing a user.
 
     passport.use(new HeaderAPIKeyStrategy(
-      'apikey',
+      { header: 'Authorization', prefix: 'Api-Key ' },
       false,
       function(apikey, done) {
         User.findOne({ apikey: apikey }, function (err, user) {
@@ -48,15 +48,14 @@ application:
 
 ## Examples
 
-    curl -v --header "apikey: asdasjsdgfjkjhg" http://127.0.0.1:3000/api/authenticate
+    curl -v --header "Authorization: Api-Key asdasjsdgfjkjhg" http://127.0.0.1:3000/api/authenticate
 
 
 ## Contributing
 
 Clone the repo, then
 ```
-npm install
-node_modules/typings/dist/bin.js install
+npm install 
 ```
 and here we go.
 Develop your new features or fixes, test it using `npm test` and create a pull request.
