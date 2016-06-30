@@ -38,7 +38,7 @@ describe('The HeaderAPIKeyStrategy\'s', () => {
         it('should default header member to \'X-Api-Key\' without prefix', () => {
             let strategy: HeaderAPIKeyStrategy = new HeaderAPIKeyStrategy(null, true, testVerify);
             expect(strategy.apiKeyHeader).to.be.ok();
-            expect(strategy.apiKeyHeader).to.eql({ header: 'X-Api-Key', prefix: '' });
+            expect(strategy.apiKeyHeader).to.eql({ header: 'x-api-key', prefix: '' });
         });
         it('should default passReqToCallback member to false', () => {
             let strategy: HeaderAPIKeyStrategy = new HeaderAPIKeyStrategy({ header: 'apikey', prefix: ''}, null, testVerify);
@@ -65,7 +65,7 @@ describe('The HeaderAPIKeyStrategy\'s', () => {
         });
         beforeEach('reset mocks and spies', () => {
             req = express().request;
-            req.headers = { 'Authorization': 'Api-Key topSecretApiKey' };
+            req.headers = { authorization: 'Api-Key topSecretApiKey' };
             fail.reset();
             success.reset();
             error.reset();
@@ -99,7 +99,7 @@ describe('The HeaderAPIKeyStrategy\'s', () => {
             expect(verify.lastCall.args[0]).to.eql('topSecretApiKey');
         });
         it('should fail if no apikey set', () => {
-            delete req.headers['Authorization'];
+            delete req.headers['authorization'];
             strategy.authenticate(req);
             expect(fail.calledOnce).to.be.ok();
             expect(fail.getCall(0).args[0]).to.eql(new BadRequestError('Missing API Key'));
@@ -108,7 +108,7 @@ describe('The HeaderAPIKeyStrategy\'s', () => {
             expect(error.called).not.to.be.ok();
         });
         it('should fail if empty apikey set', () => {
-            req.headers['Authorization'] = '';
+            req.headers['authorization'] = '';
             strategy.authenticate(req);
             expect(fail.calledOnce).to.be.ok();
             expect(fail.getCall(0).args[0]).to.eql(new BadRequestError('Missing API Key'));
@@ -117,11 +117,11 @@ describe('The HeaderAPIKeyStrategy\'s', () => {
             expect(error.called).not.to.be.ok();
         });
         it('should fail if apikey is prefixed in a false manner', () => {
-            req.headers['Authorization'] = 'WrongPrefix mySuperduperApiKey';
+            req.headers['authorization'] = 'WrongPrefix mySuperduperApiKey';
             strategy.authenticate(req);
             expect(fail.calledOnce).to.be.ok();
             expect(fail.getCall(0).args[0]).to.eql(
-                new BadRequestError('Invalid API Key prefix, Authorization header should start with "Api-Key "')
+                new BadRequestError('Invalid API Key prefix, authorization header should start with "Api-Key "')
             );
             expect(fail.getCall(0).args[1]).to.eql(null);
             expect(success.called).not.to.be.ok();
