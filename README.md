@@ -1,5 +1,8 @@
 # Passport-LocalAPIKey
 
+[![NPM version][npm-image]][npm-url]
+[![NPM downloads][downloads-image]][download-url]
+
 [Passport](http://passportjs.org/) strategy for authenticating with a apikey.
 
 This module lets you authenticate using a apikey in your Node.js
@@ -46,6 +49,25 @@ application:
         res.json({ message: "Authenticated" })
       });
 
+#### API
+
+##### Constructor
+
+    new HeaderAPIKeyStrategy(header, passReqToCallback, verify);
+
+Arguments:
+* `headerConfig` (Object):
+    * `header` (String): name of the header field to be used for api keys, default: *X-Api-Key*.
+    * `prefix` (String): prefix to be used in content of the header, eg. `Bearer adsfadsfa`, default: empty. Attention: give it with blank if needed, eg. `'Bearer '`.
+* `passReqToCallback` (Boolean): flags whether an *express* Request object is passed to the *verify* function.
+* `verify` (Function):
+    * `apiKey` (String): parsed API key from from the request. Use it to determine, which user is using your endpoint.
+    * `verified` (Function): Callback to be called when you have done the API key handling. Signature: `verify(err, user, info) => void`.
+        * `err` (Error): return an Error if user is not verified, otherwise yield `null` here
+        * `user` (Object, optional): only return user object if he is verified.
+        * `info`(Object, optional): yield additional information to success or failure of user verification.
+    * `req` (express.Request, optional): *express* Request object if `passReqToCallback` is set to true.
+
 ## Examples
 
     curl -v --header "Authorization: Api-Key asdasjsdgfjkjhg" http://127.0.0.1:3000/api/authenticate
@@ -55,7 +77,7 @@ application:
 
 Clone the repo, then
 ```
-npm install 
+npm install
 ```
 and here we go.
 Develop your new features or fixes, test it using `npm test` and create a pull request.
@@ -64,3 +86,8 @@ Develop your new features or fixes, test it using `npm test` and create a pull r
 ## Credits
 
   - [CholaLabs](https://github.com/cholalabs)
+
+[npm-url]: https://npmjs.org/package/passport-headerapikey
+[download-url]: https://npmjs.org/package/passport-headerapikey
+[npm-image]: https://img.shields.io/npm/v/passport-headerapikey.svg?style=flat
+[downloads-image]: https://img.shields.io/npm/dm/passport-headerapikey.svg?style=flat
