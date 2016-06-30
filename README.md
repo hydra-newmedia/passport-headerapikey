@@ -78,6 +78,7 @@ Arguments:
 Clone the repo, then
 ```
 npm install
+npm run install-typings
 ```
 and here we go.
 Develop your new features or fixes, test it using `npm test` and create a pull request.
