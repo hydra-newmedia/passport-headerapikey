@@ -55,8 +55,7 @@ application:
 
 Clone the repo, then
 ```
-npm install
-node_modules/typings/dist/bin.js install
+npm install 
 ```
 and here we go.
 Develop your new features or fixes, test it using `npm test` and create a pull request.
