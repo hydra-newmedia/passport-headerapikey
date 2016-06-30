@@ -16,15 +16,15 @@ import { BadRequestError } from './errors/BadRequestError';
 
 export class Strategy extends PassportStrategy {
 
-    apiKeyHeader: string;
+    apiKeyHeader: { header: string, prefix: string };
     name: string;
     verify: (apiKey: string, verified: (err: Error, user?: Object, info?: Object) => void, req?: Request) => void;
     passReqToCallback: boolean;
 
-    constructor(header: string, passReqToCallback: boolean,
+    constructor(header: { header: string, prefix: string }, passReqToCallback: boolean,
                 verify: (apiKey: string, verified: (err: Error, user?: Object, info?: Object) => void, req?: Request) => void) {
         super();
-        this.apiKeyHeader = header || 'apikey';
+        this.apiKeyHeader = header || { header: 'X-Api-Key', prefix: '' };
 
         this.name = 'headerapikey';
         this.verify = verify;
@@ -32,10 +32,20 @@ export class Strategy extends PassportStrategy {
     }
 
     authenticate(req: Request, options?: Object): void {
-        let apiKey = _.get<string>(req.headers, this.apiKeyHeader);
-
+        let apiKey: string = _.get<string>(req.headers, this.apiKeyHeader.header);
         if (!apiKey) {
             return this.fail(new BadRequestError('Missing API Key'), null);
+        }
+
+        if (_.startsWith(apiKey, this.apiKeyHeader.prefix)) {
+            apiKey = apiKey.replace(new RegExp('^' + this.apiKeyHeader.prefix), '');
+        } else {
+            return this.fail(
+                new BadRequestError(
+                    'Invalid API Key prefix, ' + this.apiKeyHeader.header + ' header should start with "' + this.apiKeyHeader.prefix + '"'
+                ),
+                null
+            );
         }
 
         let verified = (err: Error, user?: Object, info?: Object) => {
