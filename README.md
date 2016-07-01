@@ -1,4 +1,4 @@
-# Passport-LocalAPIKey
+# Passport-HeaderAPIKey
 
 [![NPM version][npm-image]][npm-url]
 [![NPM downloads][downloads-image]][download-url]
