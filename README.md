@@ -1,4 +1,4 @@
-# Passport-LocalAPIKey
+# Passport-HeaderAPIKey
 
 [![NPM version][npm-image]][npm-url]
 [![NPM downloads][downloads-image]][download-url]
@@ -23,6 +23,9 @@ The api key authentication strategy authenticates users using a apikey.
 The strategy requires a `verify` callback, which accepts these
 credentials and calls `done` providing a user.
 
+```javascipt
+    const HeaderAPIKeyStrategy = require('passport-headerapikey').HeaderAPIKeyStrategy
+    
     passport.use(new HeaderAPIKeyStrategy(
       { header: 'Authorization', prefix: 'Api-Key ' },
       false,
@@ -34,7 +37,7 @@ credentials and calls `done` providing a user.
         });
       }
     ));
-
+```
 #### Authenticate Requests
 
 Use `passport.authenticate()`, specifying the `'headerapikey'` strategy, to
