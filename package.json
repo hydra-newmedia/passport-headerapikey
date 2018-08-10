@@ -19,6 +19,7 @@
     "lib/"
   ],
   "scripts": {
+    "prepublishOnly": "tsc",
     "install-typings": "typings install",
     "pretest": "tsc && rm -rf testDist/ && tsc --rootDir test --outDir testDist test/**/*.ts typings/index.d.ts",
     "test": "mocha testDist/* -R nyan --recursive"
