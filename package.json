@@ -7,7 +7,7 @@
     "strategy"
   ],
   "author": "Christian Hotz <hotz@hydra-newmedia.com> ",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/hydra-newmedia/passport-headerapikey.git"
@@ -19,6 +19,7 @@
     "lib/"
   ],
   "scripts": {
+    "prepublishOnly": "tsc",
     "install-typings": "typings install",
     "pretest": "tsc && rm -rf testDist/ && tsc --rootDir test --outDir testDist test/**/*.ts typings/index.d.ts",
     "test": "mocha testDist/* -R nyan --recursive"
@@ -33,7 +34,7 @@
     "expect.js": "^0.3.1",
     "mocha": "^2.5.3",
     "sinon": "^1.17.4",
-    "typescript": "^1.8.10",
-    "typings": "^1.3.0"
+    "typescript": "^3.0.1",
+    "typings": "^2.1.1"
   }
 }
