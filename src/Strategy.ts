@@ -18,11 +18,11 @@ export class Strategy extends PassportStrategy {
 
     apiKeyHeader: { header: string, prefix: string };
     name: string;
-    verify: (apiKey: string, verified: (err: Error, user?: Object, info?: Object) => void, req?: Request) => void;
+    verify: (apiKey: string, verified: (err: Error | null, user?: Object, info?: Object) => void, req?: Request) => void;
     passReqToCallback: boolean;
 
     constructor(header: { header: string, prefix: string }, passReqToCallback: boolean,
-                verify: (apiKey: string, verified: (err: Error, user?: Object, info?: Object) => void, req?: Request) => void) {
+                verify: (apiKey: string, verified: (err: Error | null, user?: Object, info?: Object) => void, req?: Request) => void) {
         super();
         this.apiKeyHeader = header || { header: 'X-Api-Key', prefix: '' };
         this.apiKeyHeader.header = this.apiKeyHeader.header.toLowerCase();
@@ -49,7 +49,7 @@ export class Strategy extends PassportStrategy {
             );
         }
 
-        let verified = (err: Error, user?: Object, info?: Object) => {
+        let verified = (err: Error | null, user?: Object, info?: Object) => {
             if (err) {
                 return this.error(err);
             }
@@ -59,6 +59,6 @@ export class Strategy extends PassportStrategy {
             this.success(user, info);
         };
 
-        this.verify(apiKey, verified, this.passReqToCallback ? req : null);
+        this.verify(apiKey, verified, this.passReqToCallback ? req : undefined);
     }
 }
