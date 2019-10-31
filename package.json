@@ -14,27 +14,27 @@
   },
   "license": "MIT",
   "main": "lib/index",
-  "typings": "lib/index",
+  "types": "lib/index.d.ts",
   "files": [
     "lib/"
   ],
   "scripts": {
     "prepublishOnly": "tsc",
-    "install-typings": "typings install",
-    "pretest": "tsc && rm -rf testDist/ && tsc --rootDir test --outDir testDist test/**/*.ts typings/index.d.ts",
+    "pretest": "tsc && rm -rf testDist/ && tsc --rootDir test --outDir testDist test/**/*.ts",
     "test": "mocha testDist/* -R nyan --recursive"
   },
   "dependencies": {
-    "express": "^4.14.0",
-    "lodash": "^4.13.1",
-    "passport": "^0.3.2",
+    "lodash": "^4.17.15",
     "passport-strategy": "^1.0.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.144",
+    "@types/mocha": "^5.2.7",
+    "@types/passport-strategy": "^0.2.35",
     "expect.js": "^0.3.1",
-    "mocha": "^2.5.3",
+    "express": "^4.17.1",
+    "mocha": "^6.2.2",
     "sinon": "^1.17.4",
-    "typescript": "^3.0.1",
-    "typings": "^2.1.1"
+    "typescript": "^3.0.1"
   }
 }
