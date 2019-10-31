@@ -33,7 +33,7 @@ export class Strategy extends PassportStrategy {
     }
 
     authenticate(req: Request, options?: Object): void {
-        let apiKey: string = _.get<string>(req.headers, this.apiKeyHeader.header);
+        let apiKey: string = _.get(req.headers, this.apiKeyHeader.header) as string;
         if (!apiKey) {
             return this.fail(new BadRequestError('Missing API Key'), null);
         }

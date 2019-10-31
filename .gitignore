@@ -1,9 +1,6 @@
 # Node dependencies
 node_modules
 
-# TSD ignores expect tsd.d.ts mainfile
-typings/
-
 # distribution directory
 lib/
 testDist/
