@@ -59,6 +59,8 @@ export class Strategy extends PassportStrategy {
             this.success(user, info);
         };
 
-        this.verify(apiKey, verified, this.passReqToCallback ? req : undefined);
+        const optionalCallbackParams = [];
+        if (this.passReqToCallback) optionalCallbackParams.push(req);
+        this.verify(apiKey, verified, ...optionalCallbackParams);
     }
 }
