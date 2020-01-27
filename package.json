@@ -7,7 +7,7 @@
     "strategy"
   ],
   "author": "Christian Hotz <hotz@hydra-newmedia.com> ",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/hydra-newmedia/passport-headerapikey.git"
