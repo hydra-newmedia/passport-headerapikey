@@ -25,6 +25,8 @@ export class Strategy extends PassportStrategy {
                 verify: (apiKey: string, verified: (err: Error | null, user?: Object, info?: Object) => void, req?: Request) => void) {
         super();
         this.apiKeyHeader = header || { header: 'X-Api-Key', prefix: '' };
+        if (!this.apiKeyHeader.header) this.apiKeyHeader.header = 'X-Api-Key';
+        if (!this.apiKeyHeader.prefix) this.apiKeyHeader.prefix = '';
         this.apiKeyHeader.header = this.apiKeyHeader.header.toLowerCase();
 
         this.name = 'headerapikey';

@@ -40,6 +40,11 @@ describe('The HeaderAPIKeyStrategy\'s', () => {
             expect(strategy.apiKeyHeader).to.be.ok();
             expect(strategy.apiKeyHeader).to.eql({ header: 'x-api-key', prefix: '' });
         });
+        it('should default header prefix to empty, if omitted', () => {
+            let strategy: HeaderAPIKeyStrategy = new HeaderAPIKeyStrategy({ header: 'apikey', prefix: undefined }, true, testVerify);
+            expect(strategy.apiKeyHeader).to.be.ok();
+            expect(strategy.apiKeyHeader).to.eql({ header: 'apikey', prefix: '' });
+        });
         it('should default passReqToCallback member to false', () => {
             let strategy: HeaderAPIKeyStrategy = new HeaderAPIKeyStrategy({ header: 'apikey', prefix: ''}, null, testVerify);
             expect(strategy.passReqToCallback).to.be(false);
