@@ -33,7 +33,7 @@
     "@types/passport-strategy": "^0.2.35",
     "expect.js": "^0.3.1",
     "express": "^4.17.1",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "sinon": "^1.17.4",
     "typescript": "^3.0.1"
   }
